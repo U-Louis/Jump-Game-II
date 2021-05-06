@@ -1,0 +1,33 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var jump = function(nums) {
+    
+    let jumpsCourses = [];
+        
+    function go(pos, count){
+        
+        if (pos == nums.length){
+            jumpsCourses.push(count);
+        }
+        else if (pos < nums.length){
+            for(i=pos;i<nums[i]+1;i++){
+                count++;              
+                go(pos+1, count);
+            }
+        }        
+    }
+    
+    go(0,0);
+    
+    let ans = Math.min(...jumpsCourses);
+    return ans;
+    
+};
+
+
+/*
+returns 
+Time Limit Exceeded
+*/
